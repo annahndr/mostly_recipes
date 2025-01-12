@@ -23,4 +23,8 @@ public class User {
     @Email // checks for valid email format
     @Column (nullable = false, unique = true)
     private String email;
+
+    @ValidPassword
+    @Column(nullable = false, length = 255)
+    private String password;
 }
