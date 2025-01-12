@@ -9,6 +9,8 @@ Created to:
 
 
 BACKEND
+Started with Spring Boot, as this is familiar to me and I needed to get the FE up and working.
+
 Lots of interesting things that are new(to me):
 
 - password validation. Checking for length, whether it contains numbers, uppercase, symbol, etc. Hashing the password for storage in the database.
