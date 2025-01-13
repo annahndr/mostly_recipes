@@ -1,67 +1,34 @@
 package com.mostlyrecipes.server.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.*;
-
-import javax.annotation.processing.Generated;
 import java.util.List;
 
-@Entity
-@Table(name = "recipes")
-public class Recipe {
+public class RecipeDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    private Long id;
-
-    @Column
     private String title;
 
-    @Column
     private String description;
 
-    @Column(name = "number_of_servings")
     private int numberOfServings;
 
-    @ElementCollection
-    @CollectionTable(name = "recipe_ingredients", joinColumns = @JoinColumn(name = "recipe_id"))
-    @Column
     private List<String> ingredients;
 
-    @ElementCollection
-    @CollectionTable(name = "recipe_method_steps", joinColumns = @JoinColumn(name = "recipe_id"))
-    @Column
     private List<String> methodSteps;
 
     private String notes;
 
-//    Many recipes have one user
-    @ManyToOne
-    @JsonIgnoreProperties({"recipes"})
-    @JoinColumn(name = "user_id", nullable = false) // every recipe must have a user
-    private User user;
+    private Long userId;
 
-    public Recipe(String title, String description, int numberOfServings, List<String> ingredients, List<String> methodSteps, String notes, User user) {
+    public RecipeDTO(String title, String description, int numberOfServings, List<String> ingredients, List<String> methodSteps, String notes, Long userId) {
         this.title = title;
         this.description = description;
         this.numberOfServings = numberOfServings;
         this.ingredients = ingredients;
         this.methodSteps = methodSteps;
         this.notes = notes;
-        this.user = user;
+        this.userId = userId;
     }
 
-    public Recipe() {
-
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public RecipeDTO() {
     }
 
     public String getTitle() {
@@ -112,11 +79,11 @@ public class Recipe {
         this.notes = notes;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
