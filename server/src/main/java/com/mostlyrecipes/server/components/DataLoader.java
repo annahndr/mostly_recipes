@@ -4,6 +4,7 @@ import com.mostlyrecipes.server.models.Recipe;
 import com.mostlyrecipes.server.models.User;
 import com.mostlyrecipes.server.services.RecipeService;
 import com.mostlyrecipes.server.services.UserService;
+import jakarta.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -20,20 +21,27 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     UserService userService;
 
+    @Autowired
+    private Validator validator;
+
     public void run(ApplicationArguments args) throws Exception {
 
 //        USERS
 
-        User anna = new User("Anna", "Henderson", "anna@mail.com", "hello123Y^");
+        User anna = new User("Anna", "Henderson", "anna@mail.com", "hello123Y@");
+        validator.validate(anna);
         userService.saveUser(anna);
 
         User nigella = new User("Nigella", "Lawson", "nigella@nigella.com", "vermouth123L*");
+        validator.validate(nigella);
         userService.saveUser(nigella);
 
         User mary = new User("Mary", "Berry", "mary@berry.com", "butter456T&");
+        validator.validate(mary);
         userService.saveUser(mary);
 
         User jamie = new User("Jamie", "Oliver", "jamie@oliver.com", "oliveoil456J%");
+        validator.validate(jamie);
         userService.saveUser(jamie);
 
 //        RECIPES
