@@ -1,6 +1,7 @@
 import AddRecipeForm from "../components/AddRecipeForm";
 import Search from "../components/Search";
-import { Recipe } from '../types/Recipe';
+import RecipeList from "../components/RecipeList";
+import type { Recipe } from '../types/Recipe';
 import { useState, useEffect } from 'react';
 
 export default function RecipeContainer(){
@@ -39,6 +40,7 @@ return (
     <>
         <Search />
         <AddRecipeForm />
+        <RecipeList recipes={recipes}/>
     </>
    
 );
