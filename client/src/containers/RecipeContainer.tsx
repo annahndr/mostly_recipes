@@ -1,6 +1,7 @@
-import AddRecipeForm from "../components/AddRecipeForm";
+import NewRecipeForm from "../components/NewRecipeForm";
 import Search from "../components/Search";
 import RecipeList from "../components/RecipeList";
+import styles from './RecipeContainer.module.css'
 import type { Recipe } from '../types/Recipe';
 import { useState, useEffect } from 'react';
 
@@ -37,11 +38,15 @@ useEffect(() => {
 
 
 return (
-    <>
-        <Search />
-        <AddRecipeForm />
-        <RecipeList recipes={recipes}/>
-    </>
+    <div className={styles.container}>
+        <div className={styles.left}>
+            <Search />
+            <RecipeList recipes={recipes}/>
+        </div>
+        <div className={styles.right}>
+            <NewRecipeForm />
+        </div>
+    </div>
    
 );
 

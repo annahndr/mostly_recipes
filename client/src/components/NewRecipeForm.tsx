@@ -1,4 +1,4 @@
-export default function AddRecipeForm(){
+export default function NewRecipeForm(){
     return (
         <form action="">
            <h4>Add a Recipe</h4> 
