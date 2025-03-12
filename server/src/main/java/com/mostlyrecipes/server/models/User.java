@@ -33,15 +33,20 @@ public class User {
     @Column(nullable = false, length = 255)
     private String password;
 
+    @Enumerated(EnumType.STRING) // stores as a string in database
+    @Column(nullable = false)
+    private Role role;
+
     @JsonIgnoreProperties({"user"})
     @OneToMany(mappedBy = "user")
     private List<Recipe> recipes;
 
-    public User(String firstName, String lastName, String email, String password) {
+    public User(String firstName, String lastName, String email, String password, Role role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.role = role;
         this.recipes = new ArrayList<Recipe>();
     }
 
@@ -94,5 +99,13 @@ public class User {
 
     public void setRecipes(List<Recipe> recipes) {
         this.recipes = recipes;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

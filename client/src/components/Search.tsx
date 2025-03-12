@@ -4,7 +4,7 @@ export default function Search(){
         <>
             <form action="">
                 <h3>Find a recipe</h3>
-                <label></label>
+                <input type="text" placeholder="search for a recipe by title or ingredient" />
             </form>
         </>
     );
